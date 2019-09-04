@@ -15,47 +15,47 @@
 ``` c
 typedef struct		s_point
 {
-	double		x;
-	double		y;
-	double		z;
-	int		color;
-}			t_point;
+	double			x;
+	double			y;
+	double			z;
+	int				color;
+}					t_point;
 ```
 ``` c
 typedef struct		s_image
 {
-}			t_image;
+}					t_image;
 ```
 ``` c
 typedef struct		s_fdf
 {
-	void		*mlx;
-	void		*win;
-	t_image		*img;
-}			t_fdf;
+	void			*mlx;
+	void			*win;
+	t_image			*img;
+}					t_fdf;
 ```
 ``` c
 typedef struct		s_map
 {
-	t_point		**map;
-	int			h;
-	int			w;
-}			t_map;
+	t_point			**map;
+	int				h;
+	int				w;
+}					t_map;
 ```
 ``` c
 typedef struct		s_cam
 {
-	t_point		rot;
-	t_point		zoom;
-	t_point		shift;
-	t_point		pin;
-}			t_cam;
+	t_point			rot;
+	t_point			zoom;
+	t_point			shift;
+	t_point			pin;
+}					t_cam;
 ```
 ``` c
 typedef struct		s_state
 {
-	t_fdf		fdf;
-	t_map		map;
-	t_cam		cam;
-}			t_state;
+	t_fdf			fdf;
+	t_map			map;
+	t_cam			cam;
+}					t_state;
 ```
