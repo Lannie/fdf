@@ -1,27 +1,18 @@
-#ifndef FDF_H
-# define FDF_H
-# include "../libft/includes/libft.h"
-# include "../miniLibX/mlx.h"
-# include <fcntl.h>
-# include <stdlib.h>
-# include <math.h>
-# include <limits.h>
-# include <unistd.h>
+# LETS DO FDF
 
-# define BUFF_SIZE	4096
+### 1) initialize t_state
+### 2) write render function:
+	1. zoom
+	2. rotation
+	3. shift
+	4. projections (maybe)
 
-# define WIDTH		1280
-# define HEIGHT		720
+### 3) handle buttons (with menu)
+### 4) use mlx_loop
 
-# define TEXT_COLOR	0xEAEAEA
-# define BLUE		0x0000FF
-# define RED		0xFF0000
-# define GREEN		0x00FF00
-# define ORANGE		0xF39C12
-# define CIAN		0x117864
-# define PURPLE		0x7D3C98
-# define BLACK		0x000000
+---
 
+``` c
 typedef struct		s_point
 {
 	double			x;
@@ -29,25 +20,29 @@ typedef struct		s_point
 	double			z;
 	int				color;
 }					t_point;
-
+```
+``` c
 typedef struct		s_image
 {
 }					t_image;
-
+```
+``` c
 typedef struct		s_fdf
 {
 	void			*mlx;
 	void			*win;
 	t_image			*img;
 }					t_fdf;
-
+```
+``` c
 typedef struct		s_map
 {
 	t_point			**map;
 	int				h;
 	int				w;
 }					t_map;
-
+```
+``` c
 typedef struct		s_cam
 {
 	t_point			rot;
@@ -55,17 +50,12 @@ typedef struct		s_cam
 	t_point			shift;
 	t_point			pin;
 }					t_cam;
-
+```
+``` c
 typedef struct		s_state
 {
 	t_fdf			fdf;
 	t_map			map;
 	t_cam			cam;
 }					t_state;
-
-
-
-
-
-
-#endif
+```

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hwilderm <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: hwilderm <hwilderm@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/04 18:50:19 by hwilderm          #+#    #+#              #
-#    Updated: 2019/09/04 18:50:21 by hwilderm         ###   ########.fr        #
+#    Updated: 2019/09/04 20:14:55 by hwilderm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,17 +14,20 @@ NAME	=	fdf
 
 CC = gcc
 FLAGS = -Wall -Werror -Wextra
-LIBRARIES = -lft -L$(LIBFT_DIRECTORY)
 INCLUDES = -I $(HEADERS_DIRECTORY) -I$(LIBFT_HEADERS) -I$(MLX)
 
 LIBFT = $(LIBFT_DIRECTORY)libft.a
 LIBFT_DIRECTORY = ./libft/
 LIBFT_HEADERS = $(addprefix $(LIBFT_DIRECTORY), $(LIBFT))
+FT_LNK	= -L ./libft -l ft
 
 MLX	= ./miniLibX/
 MLX_LIB	= $(addprefix $(MLX),mlx.a)
 MLX_INC	= ./miniLibX
 MLX_LNK	= -L ./miniLibX -l mlx -framework OpenGL -framework AppKit
+
+LFLAGS = $(LIBRARIES)
+LIBRARIES = -lmlx -lm -lft -L$(LIBFT_DIRECTORY) -L$(MINILIBX_DIRECTORY) -framework OpenGL -framework AppKit
 
 HEADERS_LIST = fdf.h
 HEADERS_DIRECTORY = ./includes/
@@ -47,8 +50,7 @@ RESET = \033[0m
 all : $(NAME)
 
 $(NAME): $(LIBFT) $(OBJECTS_DIRECTORY) $(OBJECTS) $(MLX_INC)
-	@ar rc $(NAME) $(OBJECTS)
-	@ranlib $(NAME)
+	@$(CC) $(OBJECTS) $(MLX_LNK) $(FT_LNK) -lm -o $(NAME)
 	@echo "\n$(NAME): $(GREEN)object files were created$(RESET)"
 	@echo "$(NAME): $(GREEN)$(NAME) was created$(RESET)"	
 
