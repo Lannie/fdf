@@ -63,9 +63,8 @@ typedef struct		s_state
 	t_cam			cam;
 }					t_state;
 
-
-
-
-
+/*
+** <----------> add here your functions <---------->
+*/
 
 #endif
